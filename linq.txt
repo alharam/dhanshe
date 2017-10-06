@@ -1,0 +1,446 @@
+
+
+
+
+Q} Programs using Language Integrated Query 
+
+Linq with database
+
+Default.aspx.cs
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class _Default : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        DataClassesDataContext dc = new DataClassesDataContext();
+        var query = from m in dc.emps select m;
+       // GridView1.DataSource = query;
+        GridView1.DataBind();
+    }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+}
+
+Default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+            DataKeyNames="empid" DataSourceID="SqlDataSource1" 
+            onselectedindexchanged="GridView1_SelectedIndexChanged">
+            <Columns>
+                <asp:BoundField DataField="empid" HeaderText="empid" ReadOnly="True" 
+                    SortExpression="empid" />
+               
+
+
+
+
+
+ <asp:BoundField DataField="ename" HeaderText="ename" 
+	    SortExpression="ename"/>
+                <asp:BoundField DataField="eage" HeaderText="eage" SortExpression="eage" />
+            </Columns>
+        </asp:GridView>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:DatabaseConnectionString %>" 
+            SelectCommand="SELECT * FROM [emp]"></asp:SqlDataSource>
+    
+    </div>
+    </form>
+</body>
+</html>
+
+
+Output:
+
+ 
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q} Linq with XML
+
+Default2.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default2.aspx.cs" Inherits="Default2" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <asp:GridView ID="GridView1" runat="server" 
+        onselectedindexchanged="GridView1_SelectedIndexChanged">
+    </asp:GridView>
+    <div>
+    </div>
+    </form>
+</body>
+</html>
+
+
+Default2.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Xml;
+
+public partial class Default2 : System.Web.UI.Page
+{
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        XDocument a= XDocument.Load(HttpContext.Current.Server.MapPath("empx.xml"));
+        var b= from m in a.Descendants("emp") select m;
+        GridView1.DataSource=b;
+      GridView1.DataBind();
+    }
+protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+    }
+}
+
+
+
+
+
+
+
+empx.xml
+
+<?xml version="1.0" encoding="utf-8" ?>
+<emp>
+  <empid>
+    E001
+  </empid>
+  <ename>
+    kccollege
+  </ename>
+  <eage>
+    20
+  </eage>
+</emp>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q} Linq with Objects
+
+Default3.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default3.aspx.cs" Inherits="Default3" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:GridView ID="GridView1" runat="server">
+        </asp:GridView>
+    
+    </div>
+    </form>
+</body>
+</html>
+
+
+
+Default3.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class Default3 : System.Web.UI.Page
+{
+    public List<Class1> data()
+    {
+        return new List<Class1>
+        {
+        new Class1{id="101",name="kc",addrs="churchgate"},
+        new Class1{id="102",name="hr",addrs="churchgate"},
+        new Class1{id="103",name="bttc",addrs="colaba"}
+        };
+    }
+   
+
+
+
+
+
+
+
+ protected void Page_Load(object sender, EventArgs e)
+    {
+        List < Class1 > h= data();
+        var query = from c in h select c;
+        GridView1.DataSource = query;
+        GridView1.DataBind();
+    }
+}
+
+
+
+
+App_Code/Class1.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+public class Class1
+{
+    public string id{set;get;}
+    public string name{set;get;}
+    public string addrs{ set; get; }
+    public Class1()
+	{
+
+	}
+}
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q} Linq with objects with functions.
+
+Default.aspx.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+public partial class Default3 : System.Web.UI.Page
+{
+    public List<Class1> data()
+    {
+        return new List<Class1>
+        {
+        new Class1{id="101",name="kc",addrs="churchgate"},
+        new Class1{id="102",name="hr",addrs="churchgate"},
+        new Class1{id="103",name="bttc",addrs="colaba"}
+        };
+    }
+    protected void Page_Load(object sender, EventArgs e)
+    {
+        List < Class1 > emp= data();
+        var query1 = (from c in emp select c.id).Skip(1).Take(2);
+        var query2 = (from c in emp select c).Count();
+        var query3 = (from c in emp select c.id).Max();
+        var query4 = (from c in emp select c.id).Min();
+        var query5 = (from c in emp select c.id).First();
+        var query6 = (from c in emp select c.id).Last();
+        GridView1.DataSource = query1;
+        GridView1.DataBind();
+        Label1.Text = "Count is "+Convert.ToString(query2);
+        Label2.Text = "the maximum is" + Convert.ToString(query3);
+        Label3.Text = "the minimum value is" + Convert.ToString(query4);
+        Label4.Text = "the first value is" + Convert.ToString(query5);
+        Label5.Text = "the last value is" + Convert.ToString(query6);
+    }
+    protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+    {
+
+    }
+}
+
+
+
+
+
+
+Default.aspx
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default3.aspx.cs" Inherits="Default3" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    
+        <asp:GridView ID="GridView1" runat="server" 
+            onselectedindexchanged="GridView1_SelectedIndexChanged">
+        </asp:GridView>
+        <br />
+        <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="Label3" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="Label4" runat="server" Text="Label"></asp:Label>
+        <br />
+        <br />
+        <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+    
+    </div>
+    </form>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Class1.cs
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+
+public class Class1
+{
+    public string id{set;get;}
+    public string name{set;get;}
+    public string addrs{ set; get; }
+    public Class1()
+	{
+	}
+}
+
+
+
+
+Output:
