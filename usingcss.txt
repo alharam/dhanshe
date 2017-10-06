@@ -1,0 +1,82 @@
+//StyleSheet.css
+body
+{
+    background-color: #CCFF33;
+    font-family: 'Arial Black';
+    font-size: larger;
+    font-style: oblique;
+   
+}
+
+.man
+{
+    visibility: collapse;
+    display: block;
+    float: right;
+    font-family: 'Engravers MT';
+    font-size: small;
+    font-weight: lighter;
+    font-style: normal;
+    color: #800000;
+}
+
+#tal
+{
+    font-family: 'Courier New' , Courier, monospace;
+    font-size: xx-large;
+    text-align: center;
+}
+
+
+//Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<link rel="Stylesheet" type="text/css" href="StyleSheet.css" />
+</link>
+    <style>
+       h5
+       {
+           font-family:Chiller;
+           color:Lime;
+           text-align:center;
+         
+       }
+       
+         
+         
+        .style2
+        {
+            text-align: right;
+        }
+       
+         
+         
+    </style>
+</head>
+<body style="height: 238px">
+    <form id="form1" runat="server">
+  
+    <h1 style="font-family: 'Agency FB'; font-size: larger; font-weight: 400; font-style: italic; font-variant: inherit; text-transform: inherit; color: #00FFFF; text-decoration: none; background-color: #FFFFFF; border-style: dotted" 
+        >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; This is KC COllege
+
+    </h1>
+    <h5> KC College is in Mumbai</h5>
+    
+        <div class="style2">
+    
+        <p class="man">Manisha</p>
+    <a id="tal">Talreja</a>
+   
+    </div>
+   
+    <p style="font-size:xx-small">TYBscIT</p>
+
+    </form>
+</body>
+</html>
+ 
+
