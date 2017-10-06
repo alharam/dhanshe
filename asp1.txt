@@ -1,0 +1,466 @@
+Write a console application that obtains four int values from the user and displays
+the product...
+class Demo
+{
+static void Main(string[] args)
+{
+int no1,no2,no3,no4;
+Console.WriteLine("Enter No1:");
+no1=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter No2:");
+no2=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter No3:");
+no3=Convert.ToInt32(Console.ReadLine());
+Console.WriteLine("Enter No4:");
+no4=Convert.ToInt32(Console.ReadLine());
+int product=no1*no2*no3*no4;
+Console.WriteLine("Product is:"+product);
+Console.ReadKey();
+}
+}
+
+If you have two integers stored in variables var1 and var2, what Boolean
+ test can you perform to see if one or the other (but not both) is greater than 10?
+using A=System.Console;
+class Program
+{
+static void Main(string[] args)
+{
+int var1, var2;
+A.WriteLine("Enter var1 : ");
+var1 = int.Parse(A.ReadLine());
+A.WriteLine("Enter var2 : ");
+var2 = int.Parse(A.ReadLine());
+if (var1 > 10)
+{
+A.WriteLine(var1 + " is Greater Than 10");
+}
+else if (var2 > 10)
+{
+A.WriteLine(var2 + " is Greater Than 10");
+}
+else
+{
+A.WriteLine(var1 + " & " + var2 + " is Less Than 10");
+}
+A.ReadKey();
+}
+}
+
+Write an application to obtain two numbers from the user, and displays them,
+but rejects any input where both numbers are greater than 10 and asks for two
+new numbers.....
+using System;
+class Program
+{
+static void Main(string[] args)
+{
+int var1, var2;
+label:
+Console.WriteLine();
+Console.Write("Enter number 1: ");
+var1 = Convert.ToInt32(Console.ReadLine());
+Console.Write("Enter number 2: ");
+var2 = Convert.ToInt32(Console.ReadLine());
+if ((var1 > 10 && var2 > 10))
+{
+Console.WriteLine("The numbers are greater than 10,Please re-enter the numbers");
+goto label;
+}
+else
+{
+Console.WriteLine("Number 1: " + var1);
+Console.WriteLine("Number 2 :" + var2);
+}
+Console.ReadKey();
+}
+}
+Write a console application that places double quotation marks around each word in a string.
+
+using A = System.Console;
+class Demo
+{
+static void Main(string[] args)
+{
+string str = "We Can & We Will";
+string[] strLine = str.Split();
+A.WriteLine("Given string is : {0} ",str);
+A.WriteLine();
+A.WriteLine("The result is ");
+foreach (string word in strLine)
+{
+A.WriteLine("\"{0}\"",word);
+}
+A.ReadKey();
+}
+}
+
+Write an application that receives the following information from a set of
+students:
+Student Id:
+Student Name:
+Course Name:
+Date of Birth:
+The application should also display the information of all the students once the
+data is entered. Implement this using an Array of Structs.
+
+using A=System.Console;
+class Demo
+{
+public struct Student
+{
+public string StudID;
+public string StudName;
+public string CourseName;
+public string DOB;
+}
+static void Main(string[] args)
+{
+Student[] stud = new Student[2];
+A.WriteLine("Enter the Student details:");
+for(int i = 0; i < 2; i++)
+{
+A.WriteLine();
+A.WriteLine("Enter Student ID:");
+stud[i].StudID = A.ReadLine();
+A.WriteLine("Enter Student Name:");
+stud[i].StudName = A.ReadLine();
+A.WriteLine("Enter Student Course Name:");
+stud[i].CourseName = A.ReadLine();
+A.WriteLine("Enter Student DOB:");
+stud[i].DOB = A.ReadLine();
+}
+A.WriteLine();
+A.WriteLine();
+A.WriteLine("Student details:");
+for(int i = 0; i < 2; i++)
+{
+A.WriteLine();
+A.WriteLine("Student ID:{0}", stud[i].StudID);
+A.WriteLine("Student Name:{0}", stud[i].StudName);
+A.WriteLine("Student Course Name:{0}", stud[i].CourseName);
+A.WriteLine("Student DOB:{0}", stud[i].DOB);
+}
+A.ReadKey();
+}
+}
+
+Write a program using conditional statements and loops to generate Fibonacci
+series.
+using A=System.Console;
+class Program
+{
+static void Main(string[] args)
+{
+int previous=-1; int next=1;
+int position;
+A.WriteLine("Enter the position");
+position=int.Parse(A.ReadLine());
+for(int i=0;i<position;i++)
+{
+int sum = next + previous;
+previous = next;
+next = sum;
+A.Write(next + " ");
+}
+A.ReadKey();
+}
+}
+
+III) Test for prime numbers.
+using A=System.Console;
+class Program
+{
+static void Main(string[] args)
+{
+int number;
+A.WriteLine("Enter the number:");
+number = int.Parse(A.ReadLine());
+int i;
+for (i = 2; i < number; i++)
+{
+if (number % i == 0)
+{
+A.WriteLine("{0} is not prime number", number);
+break;
+}
+}
+if (i == number)
+{
+A.WriteLine("{0} is a prime number", number);
+}
+A.ReadKey();
+}
+}
+
+V) Reverse and sum of digits.
+using A=System.Console;
+class Demo
+{
+static void Main(string[] args)
+{
+A.WriteLine("Enter number:");
+int num, sum = 0;
+num = int.Parse(A.ReadLine());
+A.WriteLine();
+A.WriteLine("Reverse number is :");
+while (num > 0)
+{
+int temp;
+temp = num % 10;
+sum = sum + temp;
+A.Write(temp);
+num = num / 10;
+}
+A.WriteLine();
+A.WriteLine("Sum pf the number is:");
+A.Write(sum);
+A.ReadKey();
+}
+}
+
+Write a Program to ReverseNo and Palindrome Method using C#.
+
+using System;
+class program
+{
+    public static void Main()
+    {
+        int num, temp, remainder, reverse = 0;
+        Console.WriteLine("Enter an integer \n");
+        num = int.Parse(Console.ReadLine());
+        temp = num;
+        while (num > 0)
+        {
+            remainder = num % 10;
+            reverse = reverse * 10 + remainder;
+            num /= 10;
+        }
+        Console.WriteLine("Given number is = {0}", temp);
+        Console.WriteLine("Its reverse is  = {0}", reverse);
+        if (temp == reverse)
+            Console.WriteLine("Number is a palindrome \n");
+        else
+            Console.WriteLine("Number is not a palindrome \n");
+        Console.ReadLine();
+    }
+}
+
+Write a C# Program for implementing the concept of jagged array...
+  using System;
+
+    namespace jagged_array
+    {
+        class Program
+        {
+            static void Main(string[] args)
+            {
+                
+                int[][] jaggedArray = new int[4][];
+
+                
+                jaggedArray[0] = new int[2] { 7, 9 };
+                jaggedArray[1] = new int[4] { 12, 42, 26, 38 };
+                jaggedArray[2] = new int[6] { 3, 5, 7, 9, 11, 13 };
+                jaggedArray[3] = new int[3] { 4, 6, 8 };
+
+                
+                for (int i = 0; i < jaggedArray.Length; i++)
+                {
+                    System.Console.Write("Element({0}): ", i + 1);
+
+                    for (int j = 0; j < jaggedArray[i].Length; j++)
+                    {
+                        System.Console.Write(jaggedArray[i][j] + "\t");
+                    }
+                    System.Console.WriteLine();
+                }
+                Console.ReadLine();
+            }
+        }
+    }
+}
+
+Design the C# program to demonstrate the Multilevel Inheritance...
+using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    namespace Inherit
+    {
+        class inheri : vehicle
+        {
+            public void Noise()
+            {
+                Console.WriteLine("All Vehicles Creates Noise !! ");
+            }
+            static void Main(string[] args)
+            {
+                inheri obj = new inheri();
+                obj.mode();
+                obj.feature();
+                obj.Noise();
+                Console.Read();
+            }
+        }
+        class Mode
+        {
+            public void mode()
+            {
+                Console.WriteLine("There are Many Modes of Transport !!");
+            }
+        }
+        class vehicle : Mode
+        {
+            public void feature()
+            {
+                Console.WriteLine("They Mainly Help in Travelling !!");
+            }
+        }
+    }
+
+Write a Program to demonstrate the implementation of exception handling
+using System;
+namespace ErrorHandlingApplication
+{
+   class DivNumbers
+   {
+      int result;
+      DivNumbers()
+      {
+         result = 0;
+      }
+      public void division(int num1, int num2)
+      {
+         try
+         {
+            result = num1 / num2;
+         }
+         catch (DivideByZeroException e)
+         {
+            Console.WriteLine("Exception caught: {0}", e);
+         }
+         finally
+         {
+            Console.WriteLine("Result: {0}", result);
+         }
+      }
+      static void Main(string[] args)
+      {
+         DivNumbers d = new DivNumbers();
+         d.division(25, 0);
+         Console.ReadKey();
+      }
+   }
+}
+
+Write an application that uses two command-line arguments to place values into a string 
+and an integer variable, respectively. Then display these values.
+
+using System;
+{
+    class P1E
+    {
+        static void Main(string[] args)
+        {
+            String str;
+            int i;
+            str = args[0];
+            i = Convert.ToInt32(args[1]);
+            Console.WriteLine("Entered String In Command Line : {0}\nEntered Integer In Command Line : {1}", str, i);
+            Console.ReadLine();
+        }
+    }
+}
+
+
+Write a program in C# to define two methods of same name(area()) ,where one
+method calculates area of triangle, second calculates area of circle.
+using A = System.Console;
+    class Demo
+    {
+        static void Main(string[] args)
+        {
+            A.WriteLine(area(10));
+            A.WriteLine(area(24, 8));
+  
+            A.ReadKey();
+        }
+        static int area(int x)
+        {
+            return (22 * x * x/7);
+        }
+        static int area(int b, int h)
+        {
+            return (1 * b * h/2);
+        }
+        
+    }
+
+Write a program to overload constructor in C#.
+using A=System.Console;
+public class ConstOverloading
+{
+int x;
+public ConstOverloading(int a, int b)
+{
+A.WriteLine(a + b);
+}
+public ConstOverloading(float a, float b)
+{
+A.WriteLine(a + b);
+}
+public ConstOverloading()
+{
+int x = 5;
+A.WriteLine(x + x);
+}
+}
+class Demo
+{
+static void Main(string[] args)
+{
+ConstOverloading c1 = new ConstOverloading(7, 8);
+ConstOverloading c2 = new ConstOverloading(34.5f, 20.8f);
+ConstOverloading c3 = new ConstOverloading();
+A.ReadKey();
+}
+}
+
+Write a program to implement Object concept of function overloading. */
+ 
+ using System;
+ using System.Collections.Generic;
+ using System.Linq;
+ using System.Text;
+
+ namespace ConsoleApplication1
+ {
+ +    class Area
+ +    {
+ +        int length, breath;
+ +        public int Area1(int l)
+ +        {
+ +            length = breath = l;
+ +            return (length * breath);
+ +        }
+ +        public int Area1(int l, int b)
+ +        {
+ +            length = l;
+ +            breath = b;
+ +            return (l * b);
+ +        }
+ +    }
+ +    class Program
+ +    {
+ +        static void Main(string[] args)
+ +        {
+ +            Area a = new Area();
+ +            Console.WriteLine("\nArea is: " + a.Area1(20));
+ +            Console.WriteLine("\nArea is: " + a.Area1(10,20));
+ +
+ +            Console.ReadKey();
+ +        }
+ +    }
+ +}
+
