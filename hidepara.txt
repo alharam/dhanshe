@@ -1,0 +1,50 @@
+<html>
+< head runat="server">
+<title>exploring jquery</title>
+<script src="scripts/jquery-1.4.1.js" type="text/javascrpt">
+</script>
+<script type="text/javascript">
+$(document).ready(function90
+{
+$('p').eq(1).hide();
+$('a.hide').hide();
+$('a.show').show();
+$('a.show').click(function()
+{
+$('p).eq(1).show();
+$('a.show').hide();
+$('a.hide').show();
+});
+$('a.hide').click(function()
+{
+$('p').eq(1).hide();
+$('a.hide').hide();
+$('a.show').show();
+});
+});
+</script>
+</head>
+<body>
+
+
+
+
+
+<form id="form" runat="server">
+<div>
+<p>i
+<b>where are u going</b>
+<br/><br/>
+keep me sign in
+</p>
+<p>
+<b>not seeing your sign in seal</b>
+<br/><br/>
+hii iam md husain
+</p>
+<a href="#" class="show"> show more</a> 
+<a href="#" class="hide">hide more</a>
+</div>
+</form>
+</body>
+</html>
