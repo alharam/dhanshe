@@ -1,0 +1,229 @@
+
+Q-6 Working with Adio and Asp.net.
+//Default.aspx
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+    Enter name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+        <br />
+        Enter rollno:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+        <br />
+        Enter class:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:TextBox ID="TextBox3" runat="server"></asp:TextBox>
+        <br />
+        <asp:Button ID="Button1" runat="server" onclick="Button1_Click" Text="INSERT" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button2" runat="server" onclick="Button2_Click" Text="DELETE" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button3" runat="server" onclick="Button3_Click" Text="UPDATE" />
+        <br />
+        <br />
+        <br />
+        <asp:Button ID="Button4" runat="server" onclick="Button4_Click" 
+            Text="VIEW RECORDS" />
+        <br />
+        <br />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="False" 
+            DataSourceID="SqlDataSource1">
+            <Columns>
+                <asp:BoundField DataField="name" HeaderText="name" SortExpression="name" />
+                <asp:BoundField DataField="rollno" HeaderText="rollno" 
+                    SortExpression="rollno" />
+                <asp:BoundField DataField="class" HeaderText="class" SortExpression="class" />
+            </Columns>
+        </asp:GridView>
+      
+  <asp:SqlDataSource ID="SqlDataSource1" runat="server" 
+            ConnectionString="<%$ ConnectionStrings:ConnectionString %>" 
+            SelectCommand="SELECT * FROM [detail]"></asp:SqlDataSource>
+        <br />
+        <br />
+        <br />
+        <asp:Label ID="Label1" runat="server"></asp:Label>
+        <br />
+
+    </div>
+    </form>
+</body>
+</html>
+
+//Default.aspx.cs
+
+
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using System.Data.SqlClient;
+
+public partial class _Default : System.Web.UI.Page
+{
+    SqlConnection cont = new SqlConnection(@"Data Source=.\SQLEXPRESS;AttachDbFilename=|DataDirectory|\Database.mdf;Integrated Security=True;User Instance=True");
+
+    SqlCommand command = new SqlCommand();
+    SqlDataReader dr = null;
+
+
+
+    protected void Page_Load(object sender, EventArgs e)
+    {
+
+    }
+    protected void Button1_Click(object sender, EventArgs e)
+    {
+        try
+        {
+
+            command.CommandText = "insert into detail(name,rollno,class) values(@name,@rollno,@class)";
+            command.Parameters.AddWithValue("@name", TextBox1.Text);
+            command.Parameters.AddWithValue("@rollno", TextBox2.Text);
+            command.Parameters.AddWithValue("@class", TextBox3.Text);
+            command.Connection = cont;
+            cont.Open();
+            command.ExecuteNonQuery();
+            Label1.Text = "RECORDS INSERTED";
+
+            command.CommandText = "select * from detail";
+            command.Connection = cont;
+          
+            GridView1.DataSource = dr;
+            dr = command.ExecuteReader();
+
+           
+         GridView1.DataBind();
+            cont.Close();
+
+            }
+        catch (Exception E1)
+        {
+            Console.WriteLine(E1.Message);
+
+        }
+    }
+    protected void Button2_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            command.CommandText = "delete from detail where name=@name";
+            command.Parameters.AddWithValue("@name", TextBox1.Text);
+           
+            command.Connection = cont;
+            cont.Open();
+            command.ExecuteNonQuery();
+
+            command.CommandText = "select * from detail";
+            command.Connection = cont;
+
+            GridView1.DataSource = dr;
+            dr = command.ExecuteReader();
+
+            GridView1.DataBind();
+ 
+            Label1.Text = "RECORDS DELETED";
+            cont.Close();
+
+
+
+        }
+        catch (Exception E1)
+        {
+            Console.WriteLine(E1.Message);
+
+        }
+
+    }
+    protected void Button3_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            command.CommandText = "update detail set name=@name  where rollno=@rollno";
+            command.Parameters.AddWithValue("@name", TextBox1.Text);
+            command.Parameters.AddWithValue("@rollno", TextBox2.Text);
+            
+            command.Connection = cont;
+            cont.Open();
+            command.ExecuteNonQuery();
+            Label1.Text = "RECORDS UPDATED";
+
+            command.CommandText = "select * from detail";
+            command.Connection = cont;
+
+            GridView1.DataSource = dr;
+            dr = command.ExecuteReader();
+
+            GridView1.DataBind();
+ 
+            cont.Close();
+         }
+        catch (Exception E1)
+        {
+            Console.WriteLine(E1.Message);
+
+        }
+    }
+    protected void Button4_Click(object sender, EventArgs e)
+    {
+        try
+        {
+            command.CommandText = "select * from detail";
+            command.Connection = cont;
+            cont.Open();
+
+            GridView1.DataSource = dr;
+            dr = command.ExecuteReader();
+          
+            GridView1.DataBind();
+            Label1.Text = "Record Displayed";
+            cont.Close();
+
+
+        }
+        catch (Exception E1)
+        {
+            Console.WriteLine(E1.Message);
+
+        }
+
+    }
+}
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
