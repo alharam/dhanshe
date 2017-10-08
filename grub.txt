@@ -1,0 +1,5 @@
+INTRODUCTION TO GRUB CONF:
+vi /boot/grub/grub.conf or vi /etc/grub.conf
+press i
+change timeout
+esc +: +wq to exit

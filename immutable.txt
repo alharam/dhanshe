@@ -1,0 +1,8 @@
+
+making immutable file
+cd desktop
+touch tybscit
+chattr +i tybscit.txt
+#above file cannot be deleted
+chattr -i tybscit.txt
+#file now deletable

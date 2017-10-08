@@ -1,0 +1,20 @@
+setting up NFS server
+mkdir college
+cd college
+touch f1 f2 f3
+vi /etc/exports
+#give path
+/root/college *(rw,sync)
+esc +:wq
+service nfs restart
+showmount -e ipaddress
+service iptables stop
+service iptables status
+chmod -R 777 /root/college
+#Second terminal
+service iptables stop
+mkdir nfsclient
+mount -t nfs ipadres:/root/college/home/nfsclient
+Ls
+cd /home/nfsclient
+LS

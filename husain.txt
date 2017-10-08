@@ -1,0 +1,130 @@
+INTRODUCTION TO GRUB CONF:
+vi /boot/grub/grub.conf or vi /etc/grub.conf
+press i
+change timeout
+esc +: +wq to exit
+
+configuring firewall:
+ifconfig
+iptables -I/H INPUT -p tcp -dport 22 -S 192.168.0.1 -j ACCEPT/REJECT
+service iptables save
+service iptables restart
+iptables -L
+
+setting up apache server
+yum install httpd
+rpm -qa /grep httpd
+pwd
+cd /var/www/html
+vi index.html
+service httpd start
+service httpd restart
+ifconfig
+
+setting up proxy server[SQUID]
+yum install squid
+rpmquery squid
+service squid restart
+chkconfig squid on
+vi /etc/squid/squid.conf
+#insert own rules
+acl network serc 192.168.0.1
+acl bad url_regex .google.com
+http -access deny bad
+http -access deny all
+#it listens to port 3128
+http -port 8080
+esc+:wq
+edit prefrence advanced setting
+access website
+
+setting up samba server:
+rpm -qa/grep samba
+pwd
+mkdir tybscit
+cd tybscit
+touch t1 t2 t3
+vi /etc/samba/smb.conf
+#add folowing lines
+[tybscit]
+comment =helo
+path=/root/tybscit
+public =yes
+browseable = yes
+write List = Administrator
+esc+ :wq
+service smb restart
+getsebool -a/grep samba
+setsebool -p [name of file on 
+service smb restart
+enter ip address on main windows machine
+
+setting up FTP server
+yum install vsftpd
+rpm -qa/grep vsftpd
+chkconfig vsftpd on
+vi /etc/vsftpd/vsftpd.conf
+#ucomment 'anon_allow' line
+service vsftpd start
+ifconfig
+getsebool -a/grep ftp
+setsebool -P[Files] on
+Ls -ldz /varftp/pub
+chown ftp/var/ftp/pub
+Ls -ldz /var/ftp/pub
+cd /var/ftp/pub
+touch a1 a2 a3
+Ls
+chown ftp/var/ftp/pub
+ls -ldz /var/ftp/pub
+service vsftpd restar
+# browser ftp: address
+
+setting up NFS server
+mkdir college
+cd college
+touch f1 f2 f3
+vi /etc/exports
+#give path
+/root/college *(rw,sync)
+esc +:wq
+service nfs restart
+showmount -e ipaddress
+service iptables stop
+service iptables status
+chmod -R 777 /root/college
+#Second terminal
+service iptables stop
+mkdir nfsclient
+mount -t nfs ipadres:/root/college/home/nfsclient
+Ls
+cd /home/nfsclient
+LS
+
+password ageing policies
+useradd abc
+passwd abc
+chage-l abc
+chage -m 10 -M 15 -I 4-E -1
+chage --list abc
+
+usingsudocommand
+useradd alpha
+passw alpha
+visudo or/etc/sudoers
+#gives right to user
+su -alpha
+sudo /usr/sbin/useradd alphao1
+
+making immutable file
+
+cd desktop
+touch tybscit
+chattr +i tybscit.txt
+#above file cannot be deleted
+chattr -i tybscit.txt
+#file now deletable
+
+
+
+

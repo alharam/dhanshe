@@ -1,0 +1,7 @@
+using sudo command
+useradd alpha
+passw alpha
+visudo or/etc/sudoers
+#gives right to user
+su -alpha
+sudo /usr/sbin/useradd alphao1

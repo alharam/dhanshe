@@ -1,0 +1,6 @@
+configuring firewall:
+ifconfig
+iptables -I/H INPUT -p tcp -dport 22 -S 192.168.0.1 -j ACCEPT/REJECT
+service iptables save
+service iptables restart
+iptables -L

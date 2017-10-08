@@ -1,0 +1,20 @@
+setting up samba server:
+rpm -qa/grep samba
+pwd
+mkdir tybscit
+cd tybscit
+touch t1 t2 t3
+vi /etc/samba/smb.conf
+#add folowing lines
+[tybscit]
+comment =helo
+path=/root/tybscit
+public =yes
+browseable = yes
+write List = Administrator
+esc+ :wq
+service smb restart
+getsebool -a/grep samba
+setsebool -p [name of file on 
+service smb restart
+enter ip address on main windows machine

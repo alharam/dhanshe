@@ -1,0 +1,20 @@
+setting up FTP server
+yum install vsftpd
+rpm -qa/grep vsftpd
+chkconfig vsftpd on
+vi /etc/vsftpd/vsftpd.conf
+#ucomment 'anon_allow' line
+service vsftpd start
+ifconfig
+getsebool -a/grep ftp
+setsebool -P[Files] on
+Ls -ldz /varftp/pub
+chown ftp/var/ftp/pub
+Ls -ldz /var/ftp/pub
+cd /var/ftp/pub
+touch a1 a2 a3
+Ls
+chown ftp/var/ftp/pub
+ls -ldz /var/ftp/pub
+service vsftpd restar
+# browser ftp: address

@@ -1,0 +1,9 @@
+setting up apache server
+yum install httpd
+rpm -qa /grep httpd
+pwd
+cd /var/www/html
+vi index.html
+service httpd start
+service httpd restart
+ifconfig

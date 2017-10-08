@@ -1,0 +1,16 @@
+setting up proxy server[SQUID]
+yum install squid
+rpmquery squid
+service squid restart
+chkconfig squid on
+vi /etc/squid/squid.conf
+#insert own rules
+acl network serc 192.168.0.1
+acl bad url_regex .google.com
+http -access deny bad
+http -access deny all
+#it listens to port 3128
+http -port 8080
+esc+:wq
+edit prefrence advanced setting
+access website
