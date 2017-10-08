@@ -1,0 +1,30 @@
+writing c
+vi one.c/
+i
+write c++ and c code
+esc +:wq
+compile---qcc one.c
+running---o one.out one.c
+./one.out
+
+writing c++
+ $ vi two.cpp
+i
+write c++ code
+esc +:wq
+compile--- $ g++ two.cpp
+running---$ -o two.out two.cpp
+$ ./two.out
+
+java code
+$ vi hello.java
+i
+java code
+esc+:wq
+for running and compiling of java code 
+$ gcj -o abc.out abc.java --main=abc
+abc.java:1: warning: theimport java.util is never used
+import java.util.*;
+abac.java:2:the import java.io is nerver used
+import java.io.*;
+$ ./abc.out
