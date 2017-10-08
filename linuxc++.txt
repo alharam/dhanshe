@@ -1,0 +1,172 @@
+Prime or not:
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int low, high, i, flag;
+
+    cout << "Enter two numbers(intervals): ";
+    cin >> low >> high;
+
+    cout << "Prime numbers between " << low << " and " << high << " are: ";
+
+    while (low < high)
+    {
+        flag = 0;
+
+        for(i = 2; i <= low/2; ++i)
+        {
+            if(low % i == 0)
+            {
+                flag = 1;
+                break;
+            }
+        }
+
+        if (flag == 0)
+            cout << low << " ";
+
+        ++low;
+    }
+
+    return 0;
+}
+
+find largest and smallest number
+#include<stdio.h>
+int main()
+{
+    int i, n, lar,sm, elem;
+    printf ("Enter total number of elements \n");
+    scanf ("%d", &elem);
+    printf ("Enter first number \n");
+    scanf ("%d", &n);
+    lar = n;
+    sm=n;
+    for (i=1; i<= elem -1 ; i++)
+    {
+        printf ("\n Enter another number \n");
+        scanf ("%d",&n);
+        if (n>lar)
+        lar=n;
+        if (n<sm)
+        sm=n;
+    }
+    printf ("\n The largest number is %d", lar);
+    printf ("\n The smallest number is %d", sm);
+    return 0;
+}
+
+Write a ‘C’ program to display first n elements of Fibonacci series
+#include <stdio.h>
+int main()
+{
+    int i, n, t1 = 0, t2 = 1, nextTerm;
+
+    printf("Enter the number of terms: ");
+    scanf("%d", &n);
+
+    printf("Fibonacci Series: ");
+
+    for (i = 1; i <= n; ++i)
+    {
+        printf("%d, ", t1);
+        nextTerm = t1 + t2;
+        t1 = t2;
+        t2 = nextTerm;
+    }
+    return 0;
+}
+
+Write a ‘C’ program to display numbers divisible by 5 and 13
+in the range n1 and n2.
+#include<stdio.h>
+#include<conio.h>
+main()
+{
+int i , N1 , N2 , count = 0 , sum = 0;
+clrscr();
+printf(" Enter the values of N1 and N2\n");
+scanf("%d%d" , &N1 , &N2);
+printf(" Integers divisible by 5 are\n");
+
+for( i=N1 ; i<=N2 ; i++)
+{
+if((i%5) == 0)
+{
+printf("%d" , i)
+count ++;
+sum = sum +i;
+}
+}
+printf("\n Number of integers divisible by 5 between %d and %d = %d\n" , N1 , N2 , count);
+printf(" Sum of all integer divisible by 5 = %d\n" , sum);
+getch();
+}    
+
+Write a C/C++ program to check if the number is
+palindrome or not
+#include <iostream>
+using namespace std;
+
+int main()
+{
+     int n, num, digit, rev = 0;
+
+     cout << "Enter a positive number: ";
+     cin >> num;
+
+     n = num;
+
+     do
+     {
+         digit = num % 10;
+         rev = (rev * 10) + digit;
+         num = num / 10;
+     } while (num != 0);
+
+     cout << " The reverse of the number is: " << rev << endl;
+
+     if (n == rev)
+         cout << " The number is a palindrome";
+     else
+         cout << " The number is not a palindrome";
+
+    return 0;
+}
+
+Write a C/C++ program to display first n elements of Prime series
+
+#include <iostream>
+using namespace std;
+int main()
+{
+int n; 
+int num = 1;
+int primeCount = 0; == 0
+
+cout<< "Enter how many prime numbers you want. ";
+cin>> n; 
+cout<< 1 << '\n';
+for(int j = 1; j <= n; j++)
+{
+    num++;//num = 2
+    primeCount = 0;
+    for(int i = 1; i <= num; i++)
+    {
+
+        if(num % i == 0)
+        {
+            primeCount++;
+        }
+    }
+        if(primeCount == 2)
+        {
+            cout<< num << '\n';
+        }
+}
+return 0;
+}
+

@@ -1,0 +1,124 @@
+
+tcpServerPrime.java
+
+import java.net.*;
+import java.io.*;
+
+class tcpServerPrime
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			ServerSocketss = new ServerSocket(8001);
+			System.out.println("Server Started....");
+			Socket s = ss.accept();
+			System.out.println("Connection Accepted!");
+			DataInputStream dis = new DataInputStream(s.getInputStream());
+			int x = dis.readInt();
+			System.out.println("Data Read!" + "\nIt is " + x + "\n");
+			DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+
+			int status = 0;
+
+			if(x == 1 || x == 2)
+ 
+{
+				dos.writeUTF(x + " is prime");
+				System.out.println("Output Sent!");
+				System.exit(0);
+			}
+
+			else
+			{
+				for(inti = 2; i<= x/2; i++)
+				{
+					if(x % i == 0)
+					{
+						dos.writeUTF(x + " is not prime");
+						System.out.println("Output Sent!");
+						status = 1;
+						break;
+					}
+				}
+
+				if (status == 0)
+				{
+					dos.writeUTF(x + " is prime");
+					System.out.println("Output Sent!");
+					System.exit(0);
+				}
+			}
+		}
+ 
+		catch(Exception e)
+		{
+			System.out.println(e.toString());
+		}
+	}
+}
+
+
+tcpClientPrime.java
+
+import java.net.*;
+import java.io.*;
+
+class tcpClientPrime
+{
+	public static void main(String[] args)
+	{
+		try
+		{
+			Socket cs = new Socket("LocalHost", 8001);
+			BufferedReaderbr = new BufferedReader(new InputStreamReader(System.in));
+			System.out.println("Enter a number:");
+			int a = Integer.parseInt(br.readLine());
+			DataOutputStream dos = new DataOutputStream(cs.getOutputStream());
+			dos.writeInt(a);
+			DataInputStream dis = new DataInputStream(cs.getInputStream());
+			System.out.println(dis.readUTF());
+			cs.close();
+		}
+		
+		catch(Exception e)
+		{
+ 	
+System.out.println(e.toString());
+}
+	}
+}
+
+Write a Java Program to calculate the length of a string and reverse the string
+import java.util.Scanner;
+
+public class JavaProgram
+{
+   public static void main(String args[])
+   {
+      String str;
+      int len;
+      Scanner scan = new Scanner(System.in);
+	  
+      System.out.print("Enter Your Name : ");
+      str = scan.nextLine();
+      len = str.length();
+	  
+      System.out.print("Length of Entered String is " + len);
+   }
+}
+ 
+
+
+
+
+
+
+
+ 
+
+ 
+
+ 
+
+
